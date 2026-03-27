@@ -6,12 +6,15 @@
   <title>Simple Landing Page</title>
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-      scroll-behavior: smooth;
-    }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
     body {
       background-color: #f4f4f4;
@@ -178,21 +181,38 @@
 <script>
   window.onload = function() {
     alert("Welcome to my website 👋");
+
+    const button = document.getElementById("startBtn");
+    const hero = document.querySelector(".hero");
+    const about = document.getElementById("about");
+    const contact = document.getElementById("contact");
+    const form = document.querySelector("form");
+
+    const colors = ["#3b82f6", "#ef4444", "#facc15", "#10b981", "#a855f7"];
+
+    let index = 0;
+
+    button.addEventListener("click", function() {
+      alert("Let's get started 🚀");
+
+      const color = "#" + Math.floor(Math.random()*16777215).toString(16);
+
+      hero.style.background = color;
+      about.style.backgroundColor = color;
+      contact.style.backgroundColor = color;
+
+      index++;
+
+      if (index >= colors.length) {
+        index = 0;
+      }
+    });
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Message sent successfully ✅");
+    });
   };
-
-  const button = document.getElementById("startBtn");
-
-  button.addEventListener("click", function() {
-    alert("Let's get started 🚀");
-  });
-
-  // Contact form
-  const form = document.querySelector("form");
-
-  form.addEventListener("submit", function(e) {
-    e.preventDefault();
-    alert("Message sent successfully ✅");
-  });
 </script>
 
 </body>
